@@ -1,4 +1,13 @@
+OPTIONS=
+
+configure:
+	cabal configure
+
+run: configure
+	cabal run
+
 all:
-	cabal install --force-reinstalls && cabal run
+	cabal install $(OPTIONS) --force-reinstalls && cabal run
+
 spec:
 	cabal install && cabal spec
