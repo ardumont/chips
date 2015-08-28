@@ -1,7 +1,8 @@
+{-# LANGUAGE FlexibleContexts #-}
 module Chips.Utils where
-import Chips.Imports
-import Chips.Globals
-import Chips.Types
+import           Chips.Globals
+import           Chips.Imports
+import           Chips.Types
 
 join elem list = concat $ intersperse elem list
 
@@ -34,7 +35,7 @@ eachTile :: ((Tile, Int) -> GameMonad ()) -> GameMonad ()
 eachTile action = do
   gs <- get
   forM_ (withIndices (gs ^. tiles)) action
-    
+
 
 chipsLeft gs = length $ filter isChip (_tiles gs)
   where isChip (Chip _) = True

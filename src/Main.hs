@@ -1,6 +1,8 @@
-{-# LANGUAGE TemplateHaskell, NoMonomorphismRestriction #-}
+{-# LANGUAGE FlexibleContexts          #-}
+{-# LANGUAGE NoMonomorphismRestriction #-}
+{-# LANGUAGE TemplateHaskell           #-}
 {-# OPTIONS_GHC -fno-full-laziness -fno-cse #-}
-import Chips
+import           Chips
 main = do
   -- playSound (soundDir ++ "chips01.wav") True
   run "chips challenge" (9 * tileSize, 9 * tileSize) (gameState 1) on stepGame

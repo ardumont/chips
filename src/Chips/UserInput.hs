@@ -1,11 +1,12 @@
+{-# LANGUAGE FlexibleContexts #-}
 module Chips.UserInput where
-import Chips.Types
-import Chips.Utils
-import Chips.Imports
-import Chips.Core
-import Chips.Globals
-import Chips.GameState
-import Chips.Position
+import           Chips.Core
+import           Chips.GameState
+import           Chips.Globals
+import           Chips.Imports
+import           Chips.Position
+import           Chips.Types
+import           Chips.Utils
 
 closeRecessedWall :: GameMonad ()
 closeRecessedWall = do
@@ -57,7 +58,7 @@ on (EventKey (Char 'p') Down _ _) = do
 on (EventKey (Char 'r') Down _ _) = do
   gs <- get
   put $ gameState (gs ^. level)
-  
+
 on _ = do
   whenM not disableInput $ do
     player.direction .= Standing
@@ -69,7 +70,7 @@ maybeMove tilePos newGs_ = do
     last <- liftIO $ readIORef lastPress
     -- if we are holding a key down, we would move very fast.
     -- but in the game, there is a bit of a delay, chip doesn't ZOOM
-    -- across the screen. This code slows chip down...so if the last 
+    -- across the screen. This code slows chip down...so if the last
     -- time we moved was too recently, don't move. Just return the
     -- same gameState.
     --

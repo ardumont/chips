@@ -1,10 +1,11 @@
+{-# LANGUAGE FlexibleContexts #-}
 module Chips.Enemies where
-import Chips.Types
-import Chips.Utils
-import Chips.Imports
-import Chips.Globals
-import Chips.Position
-import Chips.Move
+import           Chips.Globals
+import           Chips.Imports
+import           Chips.Move
+import           Chips.Position
+import           Chips.Types
+import           Chips.Utils
 
 moveEnemies :: GameMonad ()
 moveEnemies = do
@@ -83,4 +84,3 @@ moveClockwiseLong i func = do
       Just DirDown  -> goDown  <||> goRight  <||> goLeft  <||> goUp
       Just DirRight -> goRight <||> goUp    <||> goDown  <||> goLeft
       Nothing       -> error $ "don't know how to get direction for enemy: " ++ (show enemy)
-

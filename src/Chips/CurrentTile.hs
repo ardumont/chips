@@ -1,10 +1,11 @@
+{-# LANGUAGE FlexibleContexts #-}
 module Chips.CurrentTile where
-import Chips.Types
-import Chips.Utils
-import Chips.Imports
-import Chips.Globals
-import Chips.GameState
-import Chips.Position
+import           Chips.GameState
+import           Chips.Globals
+import           Chips.Imports
+import           Chips.Position
+import           Chips.Types
+import           Chips.Utils
 
 checkCurTile :: Tile -> GameMonad ()
 checkCurTile (Chip _) = do
@@ -182,7 +183,7 @@ checkCurTile (Trap (Empty _) _) = do
     tileAt Current .= Trap (PlayerInTrap def) def
     player.direction .= Standing
     disableInput .= True
-    
+
 -- just means you're already in the trap
 checkCurTile (Trap (PlayerInTrap _) _) = return ()
 
